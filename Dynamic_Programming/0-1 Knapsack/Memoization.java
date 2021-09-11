@@ -10,9 +10,13 @@ class Memoization
         if (dp[n][W] != -1)
             return dp[n][W];  
         
+        //To check whether knapsack will be able to contain the entity.
+        //If not possible.
         if (wt[n - 1] > W)  
             return dp[n][W] = KnapSack(W, wt, val, n - 1, dp);
-                                       
+        
+        //If possible
+        //Here occurs two conditions will it be included into the optimal solution or not.
         else 
             return dp[n][W] = Math.max((val[n - 1] + KnapSack(W - wt[n - 1], wt, val, n - 1, dp)), KnapSack(W, wt, val, n - 1, dp));       
     }
